@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190425165049.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190425161545.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190425165357.png">
-<meta property="og:updated_time" content="2019-04-25T08:59:09.031Z">
+<meta property="og:updated_time" content="2019-04-25T09:05:02.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这个博客是怎么搭起来的">
 <meta name="twitter:description" content="这个博客是怎么搭起来的简介说起来不是很麻烦，大概是这么几个部分：GItHub个人页面， Hexo博客系统， Next主题，以及Valine评论系统。 GitHub的页面相当于给了你服务器，免费、跟GitHub项目一个管理流程还不被墙，美滋滋 hexo博客系统是台湾一小哥嫌弃GitHub推荐的Jelly博客系统，于是乎自己徒手撸了一个造福万千码农，这个系统的作用就是把一些写好了的配置文件编译成静态网">
@@ -378,7 +378,7 @@
                 
               
 
-              <time title="Created: 2019-04-25 15:16:54 / Modified: 16:59:09" itemprop="dateCreated datePublished" datetime="2019-04-25T15:16:54+08:00">2019-04-25</time>
+              <time title="Created: 2019-04-25 15:16:54 / Modified: 17:05:02" itemprop="dateCreated datePublished" datetime="2019-04-25T15:16:54+08:00">2019-04-25</time>
             
 
             
@@ -472,7 +472,7 @@
 <p>mac/win:  去nodejs.org，有长期支持的安装包，打包好的，一路next下去就完事。</p>
 <p>linux： 一样去nodejs.org，只不过下好的是个压缩包，里面是编译好的二进制文件，把这些文件该拷哪拷哪去。喜欢折腾的，可以下源码自己编译，教程一大堆。</p>
 <p>Node.js 搞定了，接下来就是hexo安装配置了。hexo是基于node.js的系统，node.js安装好之后会有叫npm的包管理器，跟apt、brew之类给人的感觉很像。</p>
-<p>安装的时候不要给npm sudo权限，毕竟不知道他会搞什么幺蛾子，改个共享lib的权限给当前用户就够了：<code>sudo chown -R \</code> whoami ` /usr/local/lib/node_modules<code>。然后</code>npm install hexo-cli -g`，完事。</p>
+<p>安装的时候不要给npm sudo权限，毕竟不知道他会搞什么幺蛾子，改个共享lib的权限给当前用户就够了：<code>sudo chown -R  `whoami`  /usr/local/lib/node_modules</code>。然后 <code>npm install hexo-cli -g</code>，完事。</p>
 <p>装好之后，cd到你clone到本地的博客文件夹，<code>hexo init</code> 初始化就完成啦。</p>
 <h2 id="Next主题"><a href="#Next主题" class="headerlink" title="Next主题"></a>Next主题</h2><p>这个主题科技感还是很浓的，安装很容易，直接找它的GitHub源码下载解压到该解压的地方就完事。唯一一个坑就是，作者旧版本和新版本开了两个repo去存，不知情的一不小心就下了旧版回来折腾出一堆幺蛾子（没错就是在下），在这指明：</p>
 <p>新版： <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next</a></p>

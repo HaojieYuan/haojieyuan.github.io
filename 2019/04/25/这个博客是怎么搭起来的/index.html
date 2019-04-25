@@ -96,18 +96,22 @@
 
 
 
-  <meta name="description" content="两个经验分布差异度计算K-L散度即交叉熵。注意该值是不对称的,即 $D_{KL}(p,q) \neq D_{KL}(q,p)$ Kolmogorov-Smirnov 检验（KS test）常用于检查两个经验分布是否相同，或者一个经验分布是否服从另一个已知的分布。该算法会返回两个结果： KS距离和p值。 其中KS距离表示KS检测中的绝对距离，该值越大二者差异越大，但由于样本个数等未归一化的影响因素，">
-<meta name="keywords" content="数学工具,统计">
+  <meta name="description" content="这个博客是怎么搭起来的简介说起来不是很麻烦，大概是这么几个部分：GItHub个人页面， Hexo博客系统， Next主题，以及Valine评论系统。 GitHub的页面相当于给了你服务器，免费、跟GitHub项目一个管理流程还不被墙，美滋滋 hexo博客系统是台湾一小哥嫌弃GitHub推荐的Jelly博客系统，于是乎自己徒手撸了一个造福万千码农，这个系统的作用就是把一些写好了的配置文件编译成静态网">
+<meta name="keywords" content="建站,网页">
 <meta property="og:type" content="article">
-<meta property="og:title" content="两个经验分布差异度计算">
-<meta property="og:url" content="http://yoursite.com/2019/01/07/经验分布是否一致检测/index.html">
+<meta property="og:title" content="这个博客是怎么搭起来的">
+<meta property="og:url" content="http://yoursite.com/2019/04/25/这个博客是怎么搭起来的/index.html">
 <meta property="og:site_name" content="小浣熊百米八秒五">
-<meta property="og:description" content="两个经验分布差异度计算K-L散度即交叉熵。注意该值是不对称的,即 $D_{KL}(p,q) \neq D_{KL}(q,p)$ Kolmogorov-Smirnov 检验（KS test）常用于检查两个经验分布是否相同，或者一个经验分布是否服从另一个已知的分布。该算法会返回两个结果： KS距离和p值。 其中KS距离表示KS检测中的绝对距离，该值越大二者差异越大，但由于样本个数等未归一化的影响因素，">
+<meta property="og:description" content="这个博客是怎么搭起来的简介说起来不是很麻烦，大概是这么几个部分：GItHub个人页面， Hexo博客系统， Next主题，以及Valine评论系统。 GitHub的页面相当于给了你服务器，免费、跟GitHub项目一个管理流程还不被墙，美滋滋 hexo博客系统是台湾一小哥嫌弃GitHub推荐的Jelly博客系统，于是乎自己徒手撸了一个造福万千码农，这个系统的作用就是把一些写好了的配置文件编译成静态网">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-25T06:04:58.806Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190425165049.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190425161545.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190425165357.png">
+<meta property="og:updated_time" content="2019-04-25T08:59:09.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="两个经验分布差异度计算">
-<meta name="twitter:description" content="两个经验分布差异度计算K-L散度即交叉熵。注意该值是不对称的,即 $D_{KL}(p,q) \neq D_{KL}(q,p)$ Kolmogorov-Smirnov 检验（KS test）常用于检查两个经验分布是否相同，或者一个经验分布是否服从另一个已知的分布。该算法会返回两个结果： KS距离和p值。 其中KS距离表示KS检测中的绝对距离，该值越大二者差异越大，但由于样本个数等未归一化的影响因素，">
+<meta name="twitter:title" content="这个博客是怎么搭起来的">
+<meta name="twitter:description" content="这个博客是怎么搭起来的简介说起来不是很麻烦，大概是这么几个部分：GItHub个人页面， Hexo博客系统， Next主题，以及Valine评论系统。 GitHub的页面相当于给了你服务器，免费、跟GitHub项目一个管理流程还不被墙，美滋滋 hexo博客系统是台湾一小哥嫌弃GitHub推荐的Jelly博客系统，于是乎自己徒手撸了一个造福万千码农，这个系统的作用就是把一些写好了的配置文件编译成静态网">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190425165049.png">
 
 
 
@@ -115,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/01/07/经验分布是否一致检测/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/25/这个博客是怎么搭起来的/">
 
 
 
@@ -125,7 +129,7 @@
   };
 </script>
 
-  <title>两个经验分布差异度计算 | 小浣熊百米八秒五</title>
+  <title>这个博客是怎么搭起来的 | 小浣熊百米八秒五</title>
   
 
 
@@ -331,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/07/经验分布是否一致检测/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/25/这个博客是怎么搭起来的/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HaojieYuan">
@@ -348,7 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">两个经验分布差异度计算
+          <h1 class="post-title" itemprop="name headline">这个博客是怎么搭起来的
 
               
             
@@ -374,24 +378,12 @@
                 
               
 
-              <time title="Created: 2019-01-07 16:43:19" itemprop="dateCreated datePublished" datetime="2019-01-07T16:43:19+08:00">2019-01-07</time>
+              <time title="Created: 2019-04-25 15:16:54 / Modified: 16:59:09" itemprop="dateCreated datePublished" datetime="2019-04-25T15:16:54+08:00">2019-04-25</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-25 14:04:58" itemprop="dateModified" datetime="2019-04-25T14:04:58+08:00">2019-04-25</time>
               
             
           </span>
@@ -408,7 +400,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/奇技淫巧/" itemprop="url" rel="index"><span itemprop="name">奇技淫巧</span></a></span>
 
                 
                 
@@ -427,8 +419,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/01/07/经验分布是否一致检测/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/07/经验分布是否一致检测/" itemprop="commentCount"></span>
+                <a href="/2019/04/25/这个博客是怎么搭起来的/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/25/这个博客是怎么搭起来的/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -456,16 +448,57 @@
       
 
       
-        <h1 id="两个经验分布差异度计算"><a href="#两个经验分布差异度计算" class="headerlink" title="两个经验分布差异度计算"></a>两个经验分布差异度计算</h1><h2 id="K-L散度"><a href="#K-L散度" class="headerlink" title="K-L散度"></a>K-L散度</h2><p>即交叉熵。注意该值是不对称的,即 $D_{KL}(p,q) \neq D_{KL}(q,p)$</p>
-<h2 id="Kolmogorov-Smirnov-检验（KS-test）"><a href="#Kolmogorov-Smirnov-检验（KS-test）" class="headerlink" title="Kolmogorov-Smirnov 检验（KS test）"></a>Kolmogorov-Smirnov 检验（KS test）</h2><p>常用于检查两个经验分布是否相同，或者一个经验分布是否服从另一个已知的分布。该算法会返回两个结果： KS距离和p值。 其中KS距离表示KS检测中的绝对距离，该值越大二者差异越大，但由于样本个数等未归一化的影响因素，只看KS值是不准确的。于是有归一化后的用于显著性检测的p值，该值越大，二者越相关。通常的判据即KS值小且p值大，二者相关。</p>
-<h2 id="Maximum-Mean-Discrepancy（MMD）"><a href="#Maximum-Mean-Discrepancy（MMD）" class="headerlink" title="Maximum Mean Discrepancy（MMD）"></a>Maximum Mean Discrepancy（MMD）</h2><p>即在一个函数族中，选择函数，计算两个经验分布所有值输入函数所得结果的均值之差，最大的差值就是我们想要的距离。为了使距离合理，函数族必须满足：</p>
+        <h1 id="这个博客是怎么搭起来的"><a href="#这个博客是怎么搭起来的" class="headerlink" title="这个博客是怎么搭起来的"></a>这个博客是怎么搭起来的</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>说起来不是很麻烦，大概是这么几个部分：GItHub个人页面， Hexo博客系统， Next主题，以及Valine评论系统。</p>
+<p>GitHub的页面相当于给了你服务器，免费、跟GitHub项目一个管理流程还不被墙，美滋滋</p>
+<p>hexo博客系统是台湾一小哥嫌弃GitHub推荐的Jelly博客系统，于是乎自己徒手撸了一个造福万千码农，这个系统的作用就是把一些写好了的配置文件编译成静态网页文件，然后你就能把静态网页文件传到GitHub上装逼啦～</p>
+<p>再然后，Next主题，就是hexo系统里一个用的人很多很多的主题，很好看（看看我的就知道有多好看了）。</p>
+<p>最后，Valine评论系统，采用这个是有原因的，说说都试过哪些省的你们再试了：</p>
+<ul>
+<li>disqus，注册不了</li>
+<li>多说，自己服务器停运</li>
+<li>畅言，要网站备案什么什么号</li>
+<li>Gitment、作者自己证书过期还一堆bug。。。</li>
+</ul>
+<p>最后找到的Valine，唯一一个不需要注册任何东西就能评论的系统，可能就是因为什么都不用注册，这个才这么好装233333</p>
+<h2 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h2><p>GitHub个人页面配置，分这么几步：</p>
 <ol>
-<li>两个分布相同时结果为零，</li>
-<li>结果随观测样本增加迅速收敛至期望。</li>
+<li>搞个GitHub的号</li>
+<li>在你的号上新建一个reporsitory，起名为你的username.github.io，这样GitHub就知道你这个项目是个人博客项目，然后就会用项目内容建一个跟项目名一样的网站</li>
+<li>把这个项目clone到本地，平时在本地改改，改完git add commit push三连完事（hexo也有自带的部署功能，不会这三连也没事），（还有就是clone的时候记得clone ssh的链接，这样本地如果配过ssh公私钥对的话以后就很方便。我玩的时候https的链接clone下来每次更新都要输用户名密码很烦），（至于怎么配公私钥，移步<a href="https://coding.net/help/doc/git/ssh-key.html" target="_blank" rel="noopener">git ssh 密钥配置</a>）</li>
 </ol>
-<p>已被证明函数族满足RHKS(Reproductive Hilbert Kernel Space,再生希尔伯特核空间)上的单位球时可以满足上两条性质。</p>
-<h2 id="Mahalanobis-distance-（马氏距离）"><a href="#Mahalanobis-distance-（马氏距离）" class="headerlink" title="Mahalanobis distance （马氏距离）"></a>Mahalanobis distance （马氏距离）</h2><p>马氏距离衡量两个样本之间的距离，同时还包含欧式距离所没有的特点，比如对于一个各位之间有关系的多维向量 $x = (x_1, x_2, …, x_p)^T$，其协方差矩阵为$\Sigma$，均值为$\mu$，则有其马氏距离为: $D_M(x) = \sqrt{(x-\mu)^T\Sigma^{-1}(x-\mu)}$</p>
-<p>由于考虑了协方差矩阵，该距离比欧式距离更能反映出样本不同位之间的相关信息。</p>
+<h2 id="HEXO-博客系统"><a href="#HEXO-博客系统" class="headerlink" title="HEXO 博客系统"></a>HEXO 博客系统</h2><p>再次感谢台湾小哥的贡献。。</p>
+<p>想装这个系统，你得先有node.js。你问我什么是node.js？移步<a href="https://www.zhihu.com/question/33578075" target="_blank" rel="noopener">知乎 啥是node.js</a>。我个人的一点理解是，一个javascript的运行和管理系统，优化服务器端的访问响应。。。很底层的一个东西，有点平台的感觉。</p>
+<p>安装node.js:</p>
+<p>mac/win:  去nodejs.org，有长期支持的安装包，打包好的，一路next下去就完事。</p>
+<p>linux： 一样去nodejs.org，只不过下好的是个压缩包，里面是编译好的二进制文件，把这些文件该拷哪拷哪去。喜欢折腾的，可以下源码自己编译，教程一大堆。</p>
+<p>Node.js 搞定了，接下来就是hexo安装配置了。hexo是基于node.js的系统，node.js安装好之后会有叫npm的包管理器，跟apt、brew之类给人的感觉很像。</p>
+<p>安装的时候不要给npm sudo权限，毕竟不知道他会搞什么幺蛾子，改个共享lib的权限给当前用户就够了：<code>sudo chown -R \</code> whoami ` /usr/local/lib/node_modules<code>。然后</code>npm install hexo-cli -g`，完事。</p>
+<p>装好之后，cd到你clone到本地的博客文件夹，<code>hexo init</code> 初始化就完成啦。</p>
+<h2 id="Next主题"><a href="#Next主题" class="headerlink" title="Next主题"></a>Next主题</h2><p>这个主题科技感还是很浓的，安装很容易，直接找它的GitHub源码下载解压到该解压的地方就完事。唯一一个坑就是，作者旧版本和新版本开了两个repo去存，不知情的一不小心就下了旧版回来折腾出一堆幺蛾子（没错就是在下），在这指明：</p>
+<p>新版： <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next</a></p>
+<p>旧版： <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a></p>
+<p>进去之后至于clone最新的还是在release里找稳定的就看个人喜好了。。。我搞的最新的</p>
+<p>解压路径应该是 <code>博客路径/themes/next</code></p>
+<p>没有<code>博客路径/themes</code>的折回上一步，应该是hexo没有在这个文件夹里init。</p>
+<p>搞好之后，hexo生成静态网页<code>hexo g</code>，然后再<code>hexo s</code>就能在本地跑server看效果了，在浏览器输localhost:4000就能看。</p>
+<p>传到服务器之前配下博客目录下_config.yml（不是next主题下的 _config.yml）</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190425165049.png" alt></p>
+<p>然后<code>hexo d</code>，你的博客就上到GitHub的服务器啦。</p>
+<h2 id="Valine-评论系统"><a href="#Valine-评论系统" class="headerlink" title="Valine 评论系统"></a>Valine 评论系统</h2><p>装这个讲真不麻烦，麻烦的是找到这个系统，底下评论区玩玩就知道多好用了。</p>
+<p>过程：</p>
+<ol>
+<li><p>搞定Valine背后的LeanCloud，<a href="https://leancloud.cn" target="_blank" rel="noopener">LeanCloud官网</a>上注册个用户，新建个应用，名字随便填，建好之后在这里找需要的id和key：</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190425161545.png" alt></p>
+</li>
+<li><p>把app ID，app key之类的填到next主题目录下的_config.yml文件</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190425165357.png" alt></p>
+<p>主要就是改这两个，当然还有其他的小设置，比如回复之前看到回复框里的文字，就可以像我一样小皮一下。。。</p>
+</li>
+<li><p>修改完保存之后，老一套先<code>hexo g</code>，想本地看效果就<code>hexo s</code>看看，没啥毛病<code>hexo d</code>上传服务器，不想本地看直接上传也没毛病。</p>
+</li>
+</ol>
+<h2 id="再扯两句"><a href="#再扯两句" class="headerlink" title="再扯两句"></a>再扯两句</h2><p>搞这个纯粹是心血来潮，挺好玩的，建议用linux或者mac搞吧，windows我好久没摸了，不知道搞这个麻烦不。。。</p>
+<p>不说了看看服务器上的程序跑的咋样了</p>
 
       
     </div>
@@ -489,9 +522,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数学工具/" rel="tag"># 数学工具</a>
+            <a href="/tags/建站/" rel="tag"># 建站</a>
           
-            <a href="/tags/统计/" rel="tag"># 统计</a>
+            <a href="/tags/网页/" rel="tag"># 网页</a>
           
         </div>
       
@@ -504,15 +537,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/04/25/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/23/Neural Style Transfer/" rel="prev" title="Neural Style Transfer">
-                Neural Style Transfer <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -707,7 +740,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#两个经验分布差异度计算"><span class="nav-number">1.</span> <span class="nav-text">两个经验分布差异度计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#K-L散度"><span class="nav-number">1.1.</span> <span class="nav-text">K-L散度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kolmogorov-Smirnov-检验（KS-test）"><span class="nav-number">1.2.</span> <span class="nav-text">Kolmogorov-Smirnov 检验（KS test）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maximum-Mean-Discrepancy（MMD）"><span class="nav-number">1.3.</span> <span class="nav-text">Maximum Mean Discrepancy（MMD）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mahalanobis-distance-（马氏距离）"><span class="nav-number">1.4.</span> <span class="nav-text">Mahalanobis distance （马氏距离）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#这个博客是怎么搭起来的"><span class="nav-number">1.</span> <span class="nav-text">这个博客是怎么搭起来的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Pages"><span class="nav-number">1.2.</span> <span class="nav-text">GitHub Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HEXO-博客系统"><span class="nav-number">1.3.</span> <span class="nav-text">HEXO 博客系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next主题"><span class="nav-number">1.4.</span> <span class="nav-text">Next主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Valine-评论系统"><span class="nav-number">1.5.</span> <span class="nav-text">Valine 评论系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#再扯两句"><span class="nav-number">1.6.</span> <span class="nav-text">再扯两句</span></a></li></ol></li></ol></div>
             
 
           </div>

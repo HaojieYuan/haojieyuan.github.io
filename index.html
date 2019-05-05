@@ -313,6 +313,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/05/图片相似度评价指标/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaojieYuan">
+      <meta itemprop="description" content="也就随便写写别当真">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小浣熊百米八秒五">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/05/图片相似度评价指标/" class="post-title-link" itemprop="url">图片相似度评价指标</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-05 10:36:59 / Modified: 14:03:18" itemprop="dateCreated datePublished" datetime="2019-05-05T10:36:59+08:00">2019-05-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/05/图片相似度评价指标/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/05/图片相似度评价指标/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/05/图片相似度评价指标/" class="leancloud_visitors" data-flag-title="图片相似度评价指标">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="图片相似度评价指标"><a href="#图片相似度评价指标" class="headerlink" title="图片相似度评价指标"></a>图片相似度评价指标</h1><h2 id="调研缘由"><a href="#调研缘由" class="headerlink" title="调研缘由"></a>调研缘由</h2><p>也就是这个东西有什么用。调研这个评价指标的原因是我想从两张图片生成一张，这一张要长得和其中一张很像，但会被神经网络误认为是另一张。长得像这里就需要一个合理的图片相似度评价指标来做loss函数。</p>
+<h2 id="范数指标"><a href="#范数指标" class="headerlink" title="范数指标"></a>范数指标</h2><h3 id="n阶范数定义"><a href="#n阶范数定义" class="headerlink" title="n阶范数定义"></a>n阶范数定义</h3><p>n阶范数可简写为$L_n$，是常用的评价指标，其定义式为：$L_n(x,y)=(\sum (x_i-y_i)^n)^\frac{1}{n}$。</p>
+<h3 id="L-infty-范数"><a href="#L-infty-范数" class="headerlink" title="$L_\infty$范数"></a>$L_\infty$范数</h3><p>简单来讲就是两张图片所有像素点中差别最大的值，由定义式极限易推出 $$\lim_{n\rightarrow +\infty} L_n(x,y)=max(x_i-y_i)$$</p>
+<h3 id="L-2-范数"><a href="#L-2-范数" class="headerlink" title="$L_2$范数"></a>$L_2$范数</h3><p>最常用的相似度评价指标，直观理解就是两张图片的欧几里得距离。相对于一阶和无穷阶范数而言值比较大。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>曾有paper提到使用$L_2$范数的不合理之处，认为对于人眼而言，对比度较强的地方像素点差别会更明显，因此在$L_2$范数基础上使用协方差值作为权重得到了新的图片相似度评价指标。</p>
+<h2 id="SSIM-Structural-Similarity-Index"><a href="#SSIM-Structural-Similarity-Index" class="headerlink" title="SSIM(Structural Similarity Index)"></a>SSIM(Structural Similarity Index)</h2><p>先上两张图说明一下这个算法有多牛逼：</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190505110439.png" alt></p>
+<p>这里的MSE就是$L_2$范数</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190505110557.png" alt></p>
+<p>这里可以明显看出同样的范数约束条件，不同的SSIM值能给人天差地别的感受。我正在搞的方向对于两张图片的不可区分是对于人眼而言的，所以这个算法对我很有价值。</p>
+<h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p>吹完了牛逼，就来到了最痛苦的环节：看公式，推导，理解：</p>
+<p>整体公式：$$SSIM(x,y)=l(x,y)^\alpha c(x,y)^\beta s(x,y)^\gamma$$</p>
+<p>其中：$l(x,y)=\frac{2\mu_x\mu_y+C_1}{\mu_x^2+\mu_y^2+C_1}$，$c(x,y)=\frac{2\sigma_x\sigma_y+C_2}{\sigma_x^2+\sigma_y^2+C_2}$，$s(x,y)=\frac{2\sigma_{xy}+C_3}{2\sigma_x\sigma_y+C_3}$</p>
+<p>其中的其中：$\mu$为均值，$\sigma$为标准差，$\sigma_{xy}$为协方差，$C$均为常数</p>
+<p>$l(x,y)$:luminance，亮度，主要依靠算术平均值的差别计算；</p>
+<p>$c(x,y)$:contrast，对比度，主要依靠标准差的差别计算；</p>
+<p>$s(x,y)$:structure，结构，这个最神奇，就是上下加了常数的相关系数；</p>
+<p>$l$和$c$的由来是基本不等式：$2ab\leq a^2+b^2$ </p>
+<p>综上我们有SSIM值小于等于1。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/25/这个博客是怎么搭起来的/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1603,7 +1806,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1661,7 +1864,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1906,17 +2113,19 @@
   
     
       
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
         
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
       
     
   

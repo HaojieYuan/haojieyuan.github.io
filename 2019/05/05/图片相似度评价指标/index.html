@@ -106,7 +106,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190505110439.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190505110557.png">
-<meta property="og:updated_time" content="2019-05-05T12:13:22.948Z">
+<meta property="og:updated_time" content="2019-05-05T12:52:03.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图片相似度评价指标">
 <meta name="twitter:description" content="图片相似度评价指标调研缘由也就是这个东西有什么用。调研这个评价指标的原因是我想从两张图片生成一张，这一张要长得和其中一张很像，但会被神经网络误认为是另一张。长得像这里就需要一个合理的图片相似度评价指标来做loss函数。 范数指标n阶范数定义n阶范数可简写为$L_n$，是常用的评价指标，其定义式为：$L_n(x,y)=(\sum (x_i-y_i)^n)^\frac{1}{n}$。 $L_\inft">
@@ -360,7 +360,7 @@
                 
               
 
-              <time title="Created: 2019-05-05 10:36:59 / Modified: 20:13:22" itemprop="dateCreated datePublished" datetime="2019-05-05T10:36:59+08:00">2019-05-05</time>
+              <time title="Created: 2019-05-05 10:36:59 / Modified: 20:52:03" itemprop="dateCreated datePublished" datetime="2019-05-05T10:36:59+08:00">2019-05-05</time>
             
 
             
@@ -470,6 +470,7 @@
 </ul>
 <p>综上我们有SSIM值小于等于1。</p>
 <p>顺便一提的是SSIM整体的计算是有滑动窗口的，具体是两张图同时滑还是在固定一个的时候滑遍另一个，我没仔细找，写代码的时候再说。同时滑的可能性大一些。</p>
+<p>更新一下，准备写的时候发现有人实现过了，<a href="https://github.com/Po-Hsun-Su/pytorch-ssim" target="_blank" rel="noopener">戳这里</a>，按这个人写的来看，两张图上的窗口是同时滑的。</p>
 <h2 id="PSNR-峰值信噪比"><a href="#PSNR-峰值信噪比" class="headerlink" title="PSNR 峰值信噪比"></a>PSNR 峰值信噪比</h2><p>很古老的算法了，跟人眼所见是有一定出入的。本质就是$L_2$范数的对数形式，式子见下：</p>
 <p>$$PSNR=10\log_{10}{\frac{(2^{bits}-1)^2}{MSE}}$$</p>
 <p>其中$MSE$就是$L_2$范数。</p>

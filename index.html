@@ -358,7 +358,7 @@
                 
               
 
-              <time title="Created: 2019-05-05 10:36:59 / Modified: 14:03:18" itemprop="dateCreated datePublished" datetime="2019-05-05T10:36:59+08:00">2019-05-05</time>
+              <time title="Created: 2019-05-05 10:36:59 / Modified: 20:13:22" itemprop="dateCreated datePublished" datetime="2019-05-05T10:36:59+08:00">2019-05-05</time>
             
 
             
@@ -446,20 +446,33 @@
 <h3 id="L-infty-范数"><a href="#L-infty-范数" class="headerlink" title="$L_\infty$范数"></a>$L_\infty$范数</h3><p>简单来讲就是两张图片所有像素点中差别最大的值，由定义式极限易推出 $$\lim_{n\rightarrow +\infty} L_n(x,y)=max(x_i-y_i)$$</p>
 <h3 id="L-2-范数"><a href="#L-2-范数" class="headerlink" title="$L_2$范数"></a>$L_2$范数</h3><p>最常用的相似度评价指标，直观理解就是两张图片的欧几里得距离。相对于一阶和无穷阶范数而言值比较大。</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>曾有paper提到使用$L_2$范数的不合理之处，认为对于人眼而言，对比度较强的地方像素点差别会更明显，因此在$L_2$范数基础上使用协方差值作为权重得到了新的图片相似度评价指标。</p>
-<h2 id="SSIM-Structural-Similarity-Index"><a href="#SSIM-Structural-Similarity-Index" class="headerlink" title="SSIM(Structural Similarity Index)"></a>SSIM(Structural Similarity Index)</h2><p>先上两张图说明一下这个算法有多牛逼：</p>
+<h2 id="SSIM-Structural-Similarity-Index"><a href="#SSIM-Structural-Similarity-Index" class="headerlink" title="SSIM(Structural Similarity Index)"></a>SSIM(Structural Similarity Index)</h2><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>先上两张图说明一下这个算法有多牛逼：</p>
 <p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190505110439.png" alt></p>
 <p>这里的MSE就是$L_2$范数</p>
 <p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190505110557.png" alt></p>
 <p>这里可以明显看出同样的范数约束条件，不同的SSIM值能给人天差地别的感受。我正在搞的方向对于两张图片的不可区分是对于人眼而言的，所以这个算法对我很有价值。</p>
-<h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p>吹完了牛逼，就来到了最痛苦的环节：看公式，推导，理解：</p>
+<h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p>吹完了牛逼，就来到了最痛苦的环节：看公式，推导，理解。</p>
 <p>整体公式：$$SSIM(x,y)=l(x,y)^\alpha c(x,y)^\beta s(x,y)^\gamma$$</p>
-<p>其中：$l(x,y)=\frac{2\mu_x\mu_y+C_1}{\mu_x^2+\mu_y^2+C_1}$，$c(x,y)=\frac{2\sigma_x\sigma_y+C_2}{\sigma_x^2+\sigma_y^2+C_2}$，$s(x,y)=\frac{2\sigma_{xy}+C_3}{2\sigma_x\sigma_y+C_3}$</p>
-<p>其中的其中：$\mu$为均值，$\sigma$为标准差，$\sigma_{xy}$为协方差，$C$均为常数</p>
-<p>$l(x,y)$:luminance，亮度，主要依靠算术平均值的差别计算；</p>
-<p>$c(x,y)$:contrast，对比度，主要依靠标准差的差别计算；</p>
-<p>$s(x,y)$:structure，结构，这个最神奇，就是上下加了常数的相关系数；</p>
-<p>$l$和$c$的由来是基本不等式：$2ab\leq a^2+b^2$ </p>
+<ul>
+<li><p>其中：$l(x,y)=\frac{2\mu_x\mu_y+C_1}{\mu_x^2+\mu_y^2+C_1}$，$c(x,y)=\frac{2\sigma_x\sigma_y+C_2}{\sigma_x^2+\sigma_y^2+C_2}$，$s(x,y)=\frac{2\sigma_{xy}+C_3}{2\sigma_x\sigma_y+C_3}$</p>
+</li>
+<li><p>其中的其中：$\mu$为均值，$\sigma$为标准差，$\sigma_{xy}$为协方差，$C$均为常数</p>
+<ul>
+<li><p>$l(x,y)$:luminance，亮度，主要依靠算术平均值的差别计算；</p>
+</li>
+<li><p>$c(x,y)$:contrast，对比度，主要依靠标准差的差别计算；</p>
+</li>
+<li><p>$s(x,y)$:structure，结构，这个最神奇，就是上下加了常数的相关系数；</p>
+</li>
+<li>$l$和$c$的由来是基本不等式：$2ab\leq a^2+b^2$ </li>
+</ul>
+</li>
+</ul>
 <p>综上我们有SSIM值小于等于1。</p>
+<p>顺便一提的是SSIM整体的计算是有滑动窗口的，具体是两张图同时滑还是在固定一个的时候滑遍另一个，我没仔细找，写代码的时候再说。同时滑的可能性大一些。</p>
+<h2 id="PSNR-峰值信噪比"><a href="#PSNR-峰值信噪比" class="headerlink" title="PSNR 峰值信噪比"></a>PSNR 峰值信噪比</h2><p>很古老的算法了，跟人眼所见是有一定出入的。本质就是$L_2$范数的对数形式，式子见下：</p>
+<p>$$PSNR=10\log_{10}{\frac{(2^{bits}-1)^2}{MSE}}$$</p>
+<p>其中$MSE$就是$L_2$范数。</p>
 
           
         

@@ -358,7 +358,7 @@
                 
               
 
-              <time title="Created: 2019-05-06 16:23:14 / Modified: 17:07:45" itemprop="dateCreated datePublished" datetime="2019-05-06T16:23:14+08:00">2019-05-06</time>
+              <time title="Created: 2019-05-06 16:23:14 / Modified: 17:13:26" itemprop="dateCreated datePublished" datetime="2019-05-06T16:23:14+08:00">2019-05-06</time>
             
 
             
@@ -462,7 +462,7 @@
 <p>首先认为$\nabla_xf(x)\approx\nabla_xE_{N(z|x,\sigma^2)}f(z)$，即对某输入$x$的导数等于在$x$周围随机取样得到输出的平均值对$x$的导数。</p>
 <p>那么对于$J(\theta)$，我们有$\nabla_\theta J(\theta)\approx\nabla_\theta E_{N(z|\theta,\sigma^2)}J(z)=\nabla_\theta\int J(z)\pi(z|\theta) dz$。</p>
 <p>随后采用一个很邪乎技的技巧，江湖人称log-likelihood trick，之前看强化学习也见过它，很好用：</p>
-<p>$$\nabla_\theta\int J(z)\pi(z|\theta) dz\=\int J(z)\nabla_\theta\pi(z|\theta) dz\=\int J(z)\nabla_\theta\pi(z|\theta) \frac{\pi(z|\theta)}{\pi(z|\theta)}dz\=\int J(z)\nabla_\theta\log\pi(z|\theta) \pi(z|\theta)dz\= E_{N(z|\theta,\sigma^2)}[J(z)\nabla_\theta\log\pi(z|\theta)]$$</p>
+<p>$$\nabla_\theta\int J(z)\pi(z|\theta) dz=\int J(z)\nabla_\theta\pi(z|\theta) dz=\int J(z)\nabla_\theta\pi(z|\theta) \frac{\pi(z|\theta)}{\pi(z|\theta)}dz=\int J(z)\nabla_\theta\log\pi(z|\theta) \pi(z|\theta)dz= E_{N(z|\theta,\sigma^2)}[J(z)\nabla_\theta\log\pi(z|\theta)]$$</p>
 <p>上式中$J(z)$在给定z的情况下可以直接计算出来，$\log\pi(z|\theta)$对于$\theta$的导数也可以通过求导公式直接得到值（这里$\pi$是正态分布概率密度函数），我们要做的只是多次采样$z$后区平均来逼近期望值。这个期望值就是梯度的近似值。然后利用梯度下降，就可以优化目标函数了。</p>
 <h2 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h2><ul>
 <li>攻击防御过或未防御过的网络均采用攻击成功率来衡量，对于每种防御方法均采用了该方法原paper中的setting。</li>

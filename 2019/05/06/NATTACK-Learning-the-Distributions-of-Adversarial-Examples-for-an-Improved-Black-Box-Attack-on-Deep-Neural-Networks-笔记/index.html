@@ -97,14 +97,14 @@
 
 
   <meta name="description" content="NATTACK 笔记论文Motivation 最根本的motivation：研究对抗样本是为了更好的理解DNN 区别于传统黑盒攻击利用白盒攻击所得对抗样本的迁移性，该方法试图揭示对抗样本的空间分布，并利用该分布直接得到对抗样本 使用一种攻击方法破解多种防御手段  论文方法优点 生成对抗样本的攻击成功率高 生成速度快，可以使adv training受益 针对一个样本，可以生成无限多个对抗样本，过去方">
-<meta name="keywords" content="数学工具,CV,对抗样本,PaperReading">
+<meta name="keywords" content="CV,对抗样本,PaperReading,数学工具">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NATTACK Learning the Distributions of Adversarial Examples for an Improved Black-Box Attack on Deep Neural Networks 笔记">
 <meta property="og:url" content="http://yoursite.com/2019/05/06/NATTACK-Learning-the-Distributions-of-Adversarial-Examples-for-an-Improved-Black-Box-Attack-on-Deep-Neural-Networks-笔记/index.html">
 <meta property="og:site_name" content="小浣熊百米八秒五">
 <meta property="og:description" content="NATTACK 笔记论文Motivation 最根本的motivation：研究对抗样本是为了更好的理解DNN 区别于传统黑盒攻击利用白盒攻击所得对抗样本的迁移性，该方法试图揭示对抗样本的空间分布，并利用该分布直接得到对抗样本 使用一种攻击方法破解多种防御手段  论文方法优点 生成对抗样本的攻击成功率高 生成速度快，可以使adv training受益 针对一个样本，可以生成无限多个对抗样本，过去方">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-06T09:07:45.040Z">
+<meta property="og:updated_time" content="2019-05-06T09:13:26.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NATTACK Learning the Distributions of Adversarial Examples for an Improved Black-Box Attack on Deep Neural Networks 笔记">
 <meta name="twitter:description" content="NATTACK 笔记论文Motivation 最根本的motivation：研究对抗样本是为了更好的理解DNN 区别于传统黑盒攻击利用白盒攻击所得对抗样本的迁移性，该方法试图揭示对抗样本的空间分布，并利用该分布直接得到对抗样本 使用一种攻击方法破解多种防御手段  论文方法优点 生成对抗样本的攻击成功率高 生成速度快，可以使adv training受益 针对一个样本，可以生成无限多个对抗样本，过去方">
@@ -357,7 +357,7 @@
                 
               
 
-              <time title="Created: 2019-05-06 16:23:14 / Modified: 17:07:45" itemprop="dateCreated datePublished" datetime="2019-05-06T16:23:14+08:00">2019-05-06</time>
+              <time title="Created: 2019-05-06 16:23:14 / Modified: 17:13:26" itemprop="dateCreated datePublished" datetime="2019-05-06T16:23:14+08:00">2019-05-06</time>
             
 
             
@@ -459,7 +459,7 @@
 <p>首先认为$\nabla_xf(x)\approx\nabla_xE_{N(z|x,\sigma^2)}f(z)$，即对某输入$x$的导数等于在$x$周围随机取样得到输出的平均值对$x$的导数。</p>
 <p>那么对于$J(\theta)$，我们有$\nabla_\theta J(\theta)\approx\nabla_\theta E_{N(z|\theta,\sigma^2)}J(z)=\nabla_\theta\int J(z)\pi(z|\theta) dz$。</p>
 <p>随后采用一个很邪乎技的技巧，江湖人称log-likelihood trick，之前看强化学习也见过它，很好用：</p>
-<p>$$\nabla_\theta\int J(z)\pi(z|\theta) dz\=\int J(z)\nabla_\theta\pi(z|\theta) dz\=\int J(z)\nabla_\theta\pi(z|\theta) \frac{\pi(z|\theta)}{\pi(z|\theta)}dz\=\int J(z)\nabla_\theta\log\pi(z|\theta) \pi(z|\theta)dz\= E_{N(z|\theta,\sigma^2)}[J(z)\nabla_\theta\log\pi(z|\theta)]$$</p>
+<p>$$\nabla_\theta\int J(z)\pi(z|\theta) dz=\int J(z)\nabla_\theta\pi(z|\theta) dz=\int J(z)\nabla_\theta\pi(z|\theta) \frac{\pi(z|\theta)}{\pi(z|\theta)}dz=\int J(z)\nabla_\theta\log\pi(z|\theta) \pi(z|\theta)dz= E_{N(z|\theta,\sigma^2)}[J(z)\nabla_\theta\log\pi(z|\theta)]$$</p>
 <p>上式中$J(z)$在给定z的情况下可以直接计算出来，$\log\pi(z|\theta)$对于$\theta$的导数也可以通过求导公式直接得到值（这里$\pi$是正态分布概率密度函数），我们要做的只是多次采样$z$后区平均来逼近期望值。这个期望值就是梯度的近似值。然后利用梯度下降，就可以优化目标函数了。</p>
 <h2 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h2><ul>
 <li>攻击防御过或未防御过的网络均采用攻击成功率来衡量，对于每种防御方法均采用了该方法原paper中的setting。</li>
@@ -500,13 +500,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数学工具/" rel="tag"># 数学工具</a>
-          
             <a href="/tags/CV/" rel="tag"># CV</a>
           
             <a href="/tags/对抗样本/" rel="tag"># 对抗样本</a>
           
             <a href="/tags/PaperReading/" rel="tag"># PaperReading</a>
+          
+            <a href="/tags/数学工具/" rel="tag"># 数学工具</a>
           
         </div>
       

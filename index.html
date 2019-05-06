@@ -313,6 +313,229 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/NATTACK-Learning-the-Distributions-of-Adversarial-Examples-for-an-Improved-Black-Box-Attack-on-Deep-Neural-Networks-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaojieYuan">
+      <meta itemprop="description" content="也就随便写写别当真">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小浣熊百米八秒五">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/06/NATTACK-Learning-the-Distributions-of-Adversarial-Examples-for-an-Improved-Black-Box-Attack-on-Deep-Neural-Networks-笔记/" class="post-title-link" itemprop="url">NATTACK Learning the Distributions of Adversarial Examples for an Improved Black-Box Attack on Deep Neural Networks 笔记</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-06 16:23:14 / Modified: 17:07:45" itemprop="dateCreated datePublished" datetime="2019-05-06T16:23:14+08:00">2019-05-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/06/NATTACK-Learning-the-Distributions-of-Adversarial-Examples-for-an-Improved-Black-Box-Attack-on-Deep-Neural-Networks-笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/06/NATTACK-Learning-the-Distributions-of-Adversarial-Examples-for-an-Improved-Black-Box-Attack-on-Deep-Neural-Networks-笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/06/NATTACK-Learning-the-Distributions-of-Adversarial-Examples-for-an-Improved-Black-Box-Attack-on-Deep-Neural-Networks-笔记/" class="leancloud_visitors" data-flag-title="NATTACK Learning the Distributions of Adversarial Examples for an Improved Black-Box Attack on Deep Neural Networks 笔记">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="NATTACK-笔记"><a href="#NATTACK-笔记" class="headerlink" title="NATTACK 笔记"></a>NATTACK 笔记</h1><h2 id="论文Motivation"><a href="#论文Motivation" class="headerlink" title="论文Motivation"></a>论文Motivation</h2><ul>
+<li>最根本的motivation：研究对抗样本是为了更好的理解DNN</li>
+<li>区别于传统黑盒攻击利用白盒攻击所得对抗样本的迁移性，该方法试图揭示对抗样本的空间分布，并利用该分布直接得到对抗样本</li>
+<li>使用一种攻击方法破解多种防御手段</li>
+</ul>
+<h2 id="论文方法优点"><a href="#论文方法优点" class="headerlink" title="论文方法优点"></a>论文方法优点</h2><ul>
+<li>生成对抗样本的攻击成功率高</li>
+<li>生成速度快，可以使adv training受益</li>
+<li>针对一个样本，可以生成无限多个对抗样本，过去方法普遍只能生成一个最优的</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="定义总优化目标"><a href="#定义总优化目标" class="headerlink" title="定义总优化目标"></a>定义总优化目标</h3><p>总优化目标：$\min\limits_{\theta} J(\theta) := \int {f(x^\prime)\pi_S(x^\prime|\theta)}\, {\rm d}x^\prime$</p>
+<p>这里$\pi()$是一个概率分布函数，上式本质上就是$f(x)$在$\pi()$分布下的期望值。</p>
+<h3 id="生成模型"><a href="#生成模型" class="headerlink" title="生成模型"></a>生成模型</h3><p>为了能够在$\theta$已知的情况下得到$x^\prime$的分布$\pi$，我们需要能够通过$\theta$生成大量$x^\prime$。</p>
+<p>操作方法为，将$\theta$定义为正态分布的均值和方差参数，从而通过$\theta$可以从正态分布中采样得到大量的值，将这些值称为种子（seed），然后通过映射函数将种子映射为与图片尺寸相同的向量即可。注意这里的映射函数不应该有任何可训练的参数，否则$\pi(x^\prime|\theta)$就不只有$\theta$这一个参数。</p>
+<p>作者实际使用的$\theta$是CIFAR10图像大小的向量分布参数，对于CIFAR10级别图像的攻击，映射函数就是全等映射，对于更大尺寸的图像攻击，映射函数用了双线性插值。如果需要缩小图像尺寸，映射函数也很容易找到合适的。采用常见的resize手法就可以。</p>
+<h3 id="训练生成模型"><a href="#训练生成模型" class="headerlink" title="训练生成模型"></a>训练生成模型</h3><p>有了优化的总目标，有了生成模型，我们需要做的只剩下优化模型的参数$\theta$。</p>
+<p>问题在于，优化总目标对于参数$\theta$的导数很难求，从$\theta$到$J(\theta)$的运算过程并非神经网络中常见的一些函数。</p>
+<p>所以我们要换个思路去优化$\theta$。作者给出的方法是不直接去求$J(\theta)$关于$\theta$的导数，想办法求近似值来代替，然后利用梯度下降法优化$\theta$。求近似值的方法来源于NES(Natural Evolution Strategies，2008)。</p>
+<p>首先认为$\nabla_xf(x)\approx\nabla_xE_{N(z|x,\sigma^2)}f(z)$，即对某输入$x$的导数等于在$x$周围随机取样得到输出的平均值对$x$的导数。</p>
+<p>那么对于$J(\theta)$，我们有$\nabla_\theta J(\theta)\approx\nabla_\theta E_{N(z|\theta,\sigma^2)}J(z)=\nabla_\theta\int J(z)\pi(z|\theta) dz$。</p>
+<p>随后采用一个很邪乎技的技巧，江湖人称log-likelihood trick，之前看强化学习也见过它，很好用：</p>
+<p>$$\nabla_\theta\int J(z)\pi(z|\theta) dz\=\int J(z)\nabla_\theta\pi(z|\theta) dz\=\int J(z)\nabla_\theta\pi(z|\theta) \frac{\pi(z|\theta)}{\pi(z|\theta)}dz\=\int J(z)\nabla_\theta\log\pi(z|\theta) \pi(z|\theta)dz\= E_{N(z|\theta,\sigma^2)}[J(z)\nabla_\theta\log\pi(z|\theta)]$$</p>
+<p>上式中$J(z)$在给定z的情况下可以直接计算出来，$\log\pi(z|\theta)$对于$\theta$的导数也可以通过求导公式直接得到值（这里$\pi$是正态分布概率密度函数），我们要做的只是多次采样$z$后区平均来逼近期望值。这个期望值就是梯度的近似值。然后利用梯度下降，就可以优化目标函数了。</p>
+<h2 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h2><ul>
+<li>攻击防御过或未防御过的网络均采用攻击成功率来衡量，对于每种防御方法均采用了该方法原paper中的setting。</li>
+<li>同时由于该攻击方法为迭代式，所以还加入了迭代轮数对攻击效果的影响分析</li>
+<li><p>随后测试了对不同模型攻击所得结果的泛化性（列表百分比）</p>
+</li>
+<li><p>与其他几种攻击做了比较：</p>
+<ul>
+<li><p>先与几个SOTA黑盒攻击比成功率。</p>
+</li>
+<li><p>Query Limited也是黑盒情况下利用演化算法进行攻击，将本方法中的一些tirck放到Query Limited中时，该攻击算法成功率会上升到接近本方法的地步。</p>
+</li>
+<li><p>BPDA方法也可以很好的攻破各种防御算法，但是对于每种算法都要采用不同的处理手段，而本方法对于各类防御采取的操作是一致的。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/05/图片相似度评价指标/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1820,7 +2043,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1882,7 +2105,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2128,6 +2355,8 @@
     
       
         
+      
+    
       
     
       

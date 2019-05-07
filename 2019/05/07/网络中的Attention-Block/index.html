@@ -96,16 +96,22 @@
 
 
 
-  <meta name="description" content="也就随便写写别当真">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小浣熊百米八秒五">
-<meta property="og:url" content="http://yoursite.com/archives/2019/01/index.html">
+  <meta name="description" content="调研目的神经网络的卷积+激活+池化经典3连现在已经进化成BN+卷积+激活+池化4连了，再多多数情况比如分类分割前期处理中，这样的操作已经足够。但如果我们希望提取一张图像的全局特征而不愿意使用全连接，那么有种新的网络结构可以考虑，这种结构叫self-attention block。 对我来说，我的目的是提取两张图片的特征然后做处理，我需要保持图1结构基本不变，在其中嵌入图2的整体语义，那么在这种情况">
+<meta name="keywords" content="CV,Attention Block">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络中的Attention Block">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/网络中的Attention-Block/index.html">
 <meta property="og:site_name" content="小浣熊百米八秒五">
-<meta property="og:description" content="也就随便写写别当真">
+<meta property="og:description" content="调研目的神经网络的卷积+激活+池化经典3连现在已经进化成BN+卷积+激活+池化4连了，再多多数情况比如分类分割前期处理中，这样的操作已经足够。但如果我们希望提取一张图像的全局特征而不愿意使用全连接，那么有种新的网络结构可以考虑，这种结构叫self-attention block。 对我来说，我的目的是提取两张图片的特征然后做处理，我需要保持图1结构基本不变，在其中嵌入图2的整体语义，那么在这种情况">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507114126.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507115220.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507140731.png">
+<meta property="og:updated_time" content="2019-05-07T06:09:54.475Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小浣熊百米八秒五">
-<meta name="twitter:description" content="也就随便写写别当真">
+<meta name="twitter:title" content="网络中的Attention Block">
+<meta name="twitter:description" content="调研目的神经网络的卷积+激活+池化经典3连现在已经进化成BN+卷积+激活+池化4连了，再多多数情况比如分类分割前期处理中，这样的操作已经足够。但如果我们希望提取一张图像的全局特征而不愿意使用全连接，那么有种新的网络结构可以考虑，这种结构叫self-attention block。 对我来说，我的目的是提取两张图片的特征然后做处理，我需要保持图1结构基本不变，在其中嵌入图2的整体语义，那么在这种情况">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507114126.png">
 
 
 
@@ -113,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/archives/2019/01/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/07/网络中的Attention-Block/">
 
 
 
@@ -123,7 +129,7 @@
   };
 </script>
 
-  <title>Archive | 小浣熊百米八秒五</title>
+  <title>网络中的Attention Block | 小浣熊百米八秒五</title>
   
 
 
@@ -171,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -209,7 +215,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -265,22 +271,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -312,78 +302,228 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        唔姆..! 9 篇了都， 接着编
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/网络中的Attention-Block/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaojieYuan">
+      <meta itemprop="description" content="也就随便写写别当真">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小浣熊百米八秒五">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/01/07/经验分布是否一致检测/" itemprop="url">
-            
-              <span itemprop="name">两个经验分布差异度计算</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">网络中的Attention Block
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-07T16:43:19+08:00" content="2019-01-07">
-          01-07
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-07 14:09:54" itemprop="dateCreated datePublished" datetime="2019-05-07T14:09:54+08:00">2019-05-07</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/07/网络中的Attention-Block/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/07/网络中的Attention-Block/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/07/网络中的Attention-Block/" class="leancloud_visitors" data-flag-title="网络中的Attention Block">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h2 id="调研目的"><a href="#调研目的" class="headerlink" title="调研目的"></a>调研目的</h2><p>神经网络的卷积+激活+池化经典3连现在已经进化成BN+卷积+激活+池化4连了，再多多数情况比如分类分割前期处理中，这样的操作已经足够。但如果我们希望提取一张图像的全局特征而不愿意使用全连接，那么有种新的网络结构可以考虑，这种结构叫self-attention block。</p>
+<p>对我来说，我的目的是提取两张图片的特征然后做处理，我需要保持图1结构基本不变，在其中嵌入图2的整体语义，那么在这种情况下，我可以用经典4连来做图1的特征提取，而对于图2，self-attention将是不错的选择。</p>
+<h2 id="Geometric-Attentional-Block"><a href="#Geometric-Attentional-Block" class="headerlink" title="Geometric Attentional Block"></a>Geometric Attentional Block</h2><p>来自<a href="https://arxiv.org/abs/1811.12026" target="_blank" rel="noopener">Attacks on State-of-the-Art Face Recognition using Attentional Adversarial Attack Generative Network</a>，做的是生成对抗样本的网络。在提取目标的特征过程中考虑到了要提取全局特征，所以有了下面的设计：</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507114126.png" alt></p>
+<p>这个图已经相当清晰了，唯一的问题在于NxCxHxW是如何到NxCxH/2xW/2的，在下认为这就是个简单的降采样。</p>
+<h2 id="Denoise-Block"><a href="#Denoise-Block" class="headerlink" title="Denoise Block"></a>Denoise Block</h2><p>这是谢慈航在FAIR的一篇paper，用滤波的方式消除对抗样本的影响。滤波block中需要attention block，结构如下：</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507115220.png" alt></p>
+<p>可以看到这个没有上面的复杂，但本质上差的不多，在论文里仔细看了下，所有这些想法的出处其实是17年一篇引用比较多的文章<a href="https://arxiv.org/pdf/1711.07971.pdf" target="_blank" rel="noopener">Non-Local Neural Networks</a>。</p>
+<h2 id="Non-local-Neural-Networks"><a href="#Non-local-Neural-Networks" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h2><p>先上图：</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507140731.png" alt></p>
+<p>目的一样是为了让每个像素点都能够影响到特征空间中的所有点，而且有short-cut保证很深的网络也可以训练。目前我的个人理解是，self-attention其实就是non-local映射出来的特征层上每个值的大小作为attention的程度。</p>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CV/" rel="tag"># CV</a>
+          
+            <a href="/tags/Attention-Block/" rel="tag"># Attention Block</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/NATTACK-Learning-the-Distributions-of-Adversarial-Examples-for-an-Improved-Black-Box-Attack-on-Deep-Neural-Networks-笔记/" rel="next" title="NATTACK Learning the Distributions of Adversarial Examples for an Improved Black-Box Attack on Deep Neural Networks 笔记">
+                <i class="fa fa-chevron-left"></i> NATTACK Learning the Distributions of Adversarial Examples for an Improved Black-Box Attack on Deep Neural Networks 笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -403,8 +543,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -541,6 +690,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#调研目的"><span class="nav-number">1.</span> <span class="nav-text">调研目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Geometric-Attentional-Block"><span class="nav-number">2.</span> <span class="nav-text">Geometric Attentional Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Denoise-Block"><span class="nav-number">3.</span> <span class="nav-text">Denoise Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-local-Neural-Networks"><span class="nav-number">4.</span> <span class="nav-text">Non-local Neural Networks</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -669,6 +835,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -714,6 +884,8 @@
 
 
 
+
+  
 
 
   

@@ -313,6 +313,197 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/网络中的Attention-Block/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaojieYuan">
+      <meta itemprop="description" content="也就随便写写别当真">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小浣熊百米八秒五">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/07/网络中的Attention-Block/" class="post-title-link" itemprop="url">网络中的Attention Block</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-07 14:09:54" itemprop="dateCreated datePublished" datetime="2019-05-07T14:09:54+08:00">2019-05-07</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/07/网络中的Attention-Block/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/07/网络中的Attention-Block/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/07/网络中的Attention-Block/" class="leancloud_visitors" data-flag-title="网络中的Attention Block">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="调研目的"><a href="#调研目的" class="headerlink" title="调研目的"></a>调研目的</h2><p>神经网络的卷积+激活+池化经典3连现在已经进化成BN+卷积+激活+池化4连了，再多多数情况比如分类分割前期处理中，这样的操作已经足够。但如果我们希望提取一张图像的全局特征而不愿意使用全连接，那么有种新的网络结构可以考虑，这种结构叫self-attention block。</p>
+<p>对我来说，我的目的是提取两张图片的特征然后做处理，我需要保持图1结构基本不变，在其中嵌入图2的整体语义，那么在这种情况下，我可以用经典4连来做图1的特征提取，而对于图2，self-attention将是不错的选择。</p>
+<h2 id="Geometric-Attentional-Block"><a href="#Geometric-Attentional-Block" class="headerlink" title="Geometric Attentional Block"></a>Geometric Attentional Block</h2><p>来自<a href="https://arxiv.org/abs/1811.12026" target="_blank" rel="noopener">Attacks on State-of-the-Art Face Recognition using Attentional Adversarial Attack Generative Network</a>，做的是生成对抗样本的网络。在提取目标的特征过程中考虑到了要提取全局特征，所以有了下面的设计：</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507114126.png" alt></p>
+<p>这个图已经相当清晰了，唯一的问题在于NxCxHxW是如何到NxCxH/2xW/2的，在下认为这就是个简单的降采样。</p>
+<h2 id="Denoise-Block"><a href="#Denoise-Block" class="headerlink" title="Denoise Block"></a>Denoise Block</h2><p>这是谢慈航在FAIR的一篇paper，用滤波的方式消除对抗样本的影响。滤波block中需要attention block，结构如下：</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507115220.png" alt></p>
+<p>可以看到这个没有上面的复杂，但本质上差的不多，在论文里仔细看了下，所有这些想法的出处其实是17年一篇引用比较多的文章<a href="https://arxiv.org/pdf/1711.07971.pdf" target="_blank" rel="noopener">Non-Local Neural Networks</a>。</p>
+<h2 id="Non-local-Neural-Networks"><a href="#Non-local-Neural-Networks" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h2><p>先上图：</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507140731.png" alt></p>
+<p>目的一样是为了让每个像素点都能够影响到特征空间中的所有点，而且有short-cut保证很深的网络也可以训练。目前我的个人理解是，self-attention其实就是non-local映射出来的特征层上每个值的大小作为attention的程度。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/NATTACK-Learning-the-Distributions-of-Adversarial-Examples-for-an-Improved-Black-Box-Attack-on-Deep-Neural-Networks-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2043,7 +2234,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2109,7 +2300,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2355,6 +2548,8 @@
     
       
         
+      
+    
       
     
       

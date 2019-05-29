@@ -313,6 +313,444 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/Adversarial-Examples-are-not-bugs,-They-are-features-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaojieYuan">
+      <meta itemprop="description" content="也就随便写写别当真">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小浣熊百米八秒五">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/28/Adversarial-Examples-are-not-bugs,-They-are-features-笔记/" class="post-title-link" itemprop="url">Adversarial Examples are not bugs, They are features 笔记</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-28 21:30:15" itemprop="dateCreated datePublished" datetime="2019-05-28T21:30:15+08:00">2019-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-29 20:56:31" itemprop="dateModified" datetime="2019-05-29T20:56:31+08:00">2019-05-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/28/Adversarial-Examples-are-not-bugs,-They-are-features-笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/28/Adversarial-Examples-are-not-bugs,-They-are-features-笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/28/Adversarial-Examples-are-not-bugs,-They-are-features-笔记/" class="leancloud_visitors" data-flag-title="Adversarial Examples are not bugs, They are features 笔记">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><ul>
+<li>对抗样本的本质是什么</li>
+</ul>
+<h2 id="Contrubution"><a href="#Contrubution" class="headerlink" title="Contrubution"></a>Contrubution</h2><ul>
+<li><p>解耦鲁棒特征和非鲁棒特征，以构建构建鲁棒数据集和非鲁棒数据集</p>
+<ul>
+<li>鲁棒特征：模型从数据集中学到的人眼能理解的特征</li>
+<li>非鲁棒特征：模型从数据集中学到的人眼不能理解的特征</li>
+<li>鲁棒数据集：对人眼而言与传统数据集无异，训练出的模型免疫对抗攻击</li>
+<li>非鲁棒数据集：人眼无法理解，训练出的模型能正常分类，无法免疫对抗攻击</li>
+</ul>
+</li>
+<li><p>在非解耦的状态下仅使用非鲁棒特征label数据，仍能得到在标准测试集上表现不错的模型</p>
+</li>
+</ul>
+<ul>
+<li>以上Contribution能得到的结论：<ul>
+<li>数据集中存在鲁棒特征和非鲁棒特征</li>
+<li>常规训练得到的模型使用非鲁棒特征做预测</li>
+</ul>
+</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="数据特征解耦方法"><a href="#数据特征解耦方法" class="headerlink" title="数据特征解耦方法"></a>数据特征解耦方法</h3><p>简单概括，就是mimic adversarial training得到的模型。</p>
+<p>作者说了，无法直接从数据集完成解耦，只能利用一个鲁棒模型去得到数据集中只与该模型相关的部分。</p>
+<p>使用鲁棒特征训练流程：</p>
+<ol>
+<li>通过对抗训练得到一个鲁棒模型</li>
+<li>给定优化起始位置（噪声或任意一张同类的图），L2约束该输入对于鲁棒模型的输出和原始数据集输入对于鲁棒模型的输出，反向传播优化该输入</li>
+<li>由2得到的数据集被作者称为鲁棒数据集</li>
+</ol>
+<p>使用非鲁棒特征训练流程：</p>
+<ol>
+<li>直接构建对于某target的对抗样本</li>
+<li>将（对抗样本， target）作为新的数据组以训练新模型</li>
+</ol>
+<h2 id="一些看法"><a href="#一些看法" class="headerlink" title="一些看法"></a>一些看法</h2><p>流程我应该没有写错，毕竟文章附录里有psedo-code，但是不得不说这篇paper写的很不清晰，关于robust feature这里也很模糊，最大的贡献是提出了新概念：robust feature，useful feature，希望作者后续的工作能够更有力地佐证他们的观点，祝深度学习越走越强。</p>
+<h2 id="另"><a href="#另" class="headerlink" title="另"></a>另</h2><p>今天是5月29号，风传IEEE要停用华为的编辑。</p>
+<p>我觉得吧，这是一个帝国在展现他们的力量，寰宇之内无人争锋。但这也是没落的前兆吧，我们曾经热爱Google、Github、Linux，是因为他们开放、强大、充满着智慧的光芒和信仰的力量。但是我这几年的见闻是，Google 的Tensorflow让人难受的不行，应用商店强制更新且禁不掉，mac、ios和ubuntu一样到处都能找到让人浑身不舒服的小bug，尽管前者少很多。没有什么能一直呆在神坛上，靠近了总是满满的瑕疵。</p>
+<p>计算机科学技术经历了野蛮生长的三十年，这三十年群雄并起，无数人带着梦想或是带着欲望进入了这个行当。随着我们接触到的接口越来越高层，使用的系统越拉越庞大繁杂，总有学科要介入实现管理控制，5年之内，必定是天翻地覆。起码在计算机科学技术上，我们有劣根性，是死是活，一半看政策，一半看运气。若是能拉欧洲一起下水，那将来必将是三足鼎立，欧洲一扫如今的疲软，能够与美国分庭抗礼，美国失去吸纳天下精英的优势，中国继续发展。若是欧洲中立或是站在美国阵营，那就勒紧裤腰带准备过苦日子吧。</p>
+<p>几十年的黄金时代过去了，冷战回来了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/Efficient-Decision-based-Black-box-Adversarial-Attacks-on-Face-Recognition笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaojieYuan">
+      <meta itemprop="description" content="也就随便写写别当真">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小浣熊百米八秒五">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/09/Efficient-Decision-based-Black-box-Adversarial-Attacks-on-Face-Recognition笔记/" class="post-title-link" itemprop="url">Efficient Decision-based Black-box Adversarial Attacks on Face Recognition笔记</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-09 18:51:09" itemprop="dateCreated datePublished" datetime="2019-05-09T18:51:09+08:00">2019-05-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-14 11:42:59" itemprop="dateModified" datetime="2019-05-14T11:42:59+08:00">2019-05-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/09/Efficient-Decision-based-Black-box-Adversarial-Attacks-on-Face-Recognition笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/09/Efficient-Decision-based-Black-box-Adversarial-Attacks-on-Face-Recognition笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/09/Efficient-Decision-based-Black-box-Adversarial-Attacks-on-Face-Recognition笔记/" class="leancloud_visitors" data-flag-title="Efficient Decision-based Black-box Adversarial Attacks on Face Recognition笔记">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><ul>
+<li>目前大多数人脸攻击方法不够符合现实使用的场景：黑盒、模型只返回label且没有概率。</li>
+</ul>
+<h2 id="论文方法优点"><a href="#论文方法优点" class="headerlink" title="论文方法优点"></a>论文方法优点</h2><ul>
+<li>query次数比起NES之类的黑盒攻击方法少很多</li>
+</ul>
+<h2 id="论文方法"><a href="#论文方法" class="headerlink" title="论文方法"></a>论文方法</h2>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/网络中的Attention-Block/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1986,215 +2424,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/07/经验分布是否一致检测/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HaojieYuan">
-      <meta itemprop="description" content="也就随便写写别当真">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小浣熊百米八秒五">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/07/经验分布是否一致检测/" class="post-title-link" itemprop="url">两个经验分布差异度计算</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-07 16:43:19" itemprop="dateCreated datePublished" datetime="2019-01-07T16:43:19+08:00">2019-01-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-25 14:04:58" itemprop="dateModified" datetime="2019-04-25T14:04:58+08:00">2019-04-25</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数学/" itemprop="url" rel="index"><span itemprop="name">数学</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/01/07/经验分布是否一致检测/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/07/经验分布是否一致检测/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2019/01/07/经验分布是否一致检测/" class="leancloud_visitors" data-flag-title="两个经验分布差异度计算">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="两个经验分布差异度计算"><a href="#两个经验分布差异度计算" class="headerlink" title="两个经验分布差异度计算"></a>两个经验分布差异度计算</h1><h2 id="K-L散度"><a href="#K-L散度" class="headerlink" title="K-L散度"></a>K-L散度</h2><p>即交叉熵。注意该值是不对称的,即 $D_{KL}(p,q) \neq D_{KL}(q,p)$</p>
-<h2 id="Kolmogorov-Smirnov-检验（KS-test）"><a href="#Kolmogorov-Smirnov-检验（KS-test）" class="headerlink" title="Kolmogorov-Smirnov 检验（KS test）"></a>Kolmogorov-Smirnov 检验（KS test）</h2><p>常用于检查两个经验分布是否相同，或者一个经验分布是否服从另一个已知的分布。该算法会返回两个结果： KS距离和p值。 其中KS距离表示KS检测中的绝对距离，该值越大二者差异越大，但由于样本个数等未归一化的影响因素，只看KS值是不准确的。于是有归一化后的用于显著性检测的p值，该值越大，二者越相关。通常的判据即KS值小且p值大，二者相关。</p>
-<h2 id="Maximum-Mean-Discrepancy（MMD）"><a href="#Maximum-Mean-Discrepancy（MMD）" class="headerlink" title="Maximum Mean Discrepancy（MMD）"></a>Maximum Mean Discrepancy（MMD）</h2><p>即在一个函数族中，选择函数，计算两个经验分布所有值输入函数所得结果的均值之差，最大的差值就是我们想要的距离。为了使距离合理，函数族必须满足：</p>
-<ol>
-<li>两个分布相同时结果为零，</li>
-<li>结果随观测样本增加迅速收敛至期望。</li>
-</ol>
-<p>已被证明函数族满足RHKS(Reproductive Hilbert Kernel Space,再生希尔伯特核空间)上的单位球时可以满足上两条性质。</p>
-<h2 id="Mahalanobis-distance-（马氏距离）"><a href="#Mahalanobis-distance-（马氏距离）" class="headerlink" title="Mahalanobis distance （马氏距离）"></a>Mahalanobis distance （马氏距离）</h2><p>马氏距离衡量两个样本之间的距离，同时还包含欧式距离所没有的特点，比如对于一个各位之间有关系的多维向量 $x = (x_1, x_2, …, x_p)^T$，其协方差矩阵为$\Sigma$，均值为$\mu$，则有其马氏距离为: $D_M(x) = \sqrt{(x-\mu)^T\Sigma^{-1}(x-\mu)}$</p>
-<p>由于考虑了协方差矩阵，该距离比欧式距离更能反映出样本不同位之间的相关信息。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2234,7 +2470,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2548,6 +2784,8 @@
     
       
         
+      
+    
       
     
       

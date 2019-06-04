@@ -96,22 +96,18 @@
 
 
 
-  <meta name="description" content="调研目的神经网络的卷积+激活+池化经典3连现在已经进化成BN+卷积+激活+池化4连了，再多多数情况比如分类分割前期处理中，这样的操作已经足够。但如果我们希望提取一张图像的全局特征而不愿意使用全连接，那么有种新的网络结构可以考虑，这种结构叫self-attention block。 对我来说，我的目的是提取两张图片的特征然后做处理，我需要保持图1结构基本不变，在其中嵌入图2的整体语义，那么在这种情况">
-<meta name="keywords" content="CV,Attention Block">
+  <meta name="description" content="前言如何让自己的代码在修改最少的情况下跑更多实验，这对于一个码农来说至关重要，尤其是需要多组实验对比的情况。一个很简单的办法是把参数独立出来在命令行输入，唯一的缺点是每次都要输入长达好几行的命令，尤其是牵扯到绝对路径的时候，这种情况下有更简单的解决方法，就是用配置文件。 Python命令行参数简单用法python内置了比较方便的命令行处理方法：argparse类 贴一个简单的snnipet，一看就">
+<meta name="keywords" content="命令行参数,编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络中的Attention Block">
-<meta property="og:url" content="http://yoursite.com/2019/05/07/网络中的Attention-Block/index.html">
+<meta property="og:title" content="Python命令行参数">
+<meta property="og:url" content="http://yoursite.com/2019/06/04/Python命令行参数/index.html">
 <meta property="og:site_name" content="小浣熊百米八秒五">
-<meta property="og:description" content="调研目的神经网络的卷积+激活+池化经典3连现在已经进化成BN+卷积+激活+池化4连了，再多多数情况比如分类分割前期处理中，这样的操作已经足够。但如果我们希望提取一张图像的全局特征而不愿意使用全连接，那么有种新的网络结构可以考虑，这种结构叫self-attention block。 对我来说，我的目的是提取两张图片的特征然后做处理，我需要保持图1结构基本不变，在其中嵌入图2的整体语义，那么在这种情况">
+<meta property="og:description" content="前言如何让自己的代码在修改最少的情况下跑更多实验，这对于一个码农来说至关重要，尤其是需要多组实验对比的情况。一个很简单的办法是把参数独立出来在命令行输入，唯一的缺点是每次都要输入长达好几行的命令，尤其是牵扯到绝对路径的时候，这种情况下有更简单的解决方法，就是用配置文件。 Python命令行参数简单用法python内置了比较方便的命令行处理方法：argparse类 贴一个简单的snnipet，一看就">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507114126.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507115220.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507140731.png">
-<meta property="og:updated_time" content="2019-05-07T06:09:54.475Z">
+<meta property="og:updated_time" content="2019-06-04T07:47:19.211Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络中的Attention Block">
-<meta name="twitter:description" content="调研目的神经网络的卷积+激活+池化经典3连现在已经进化成BN+卷积+激活+池化4连了，再多多数情况比如分类分割前期处理中，这样的操作已经足够。但如果我们希望提取一张图像的全局特征而不愿意使用全连接，那么有种新的网络结构可以考虑，这种结构叫self-attention block。 对我来说，我的目的是提取两张图片的特征然后做处理，我需要保持图1结构基本不变，在其中嵌入图2的整体语义，那么在这种情况">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507114126.png">
+<meta name="twitter:title" content="Python命令行参数">
+<meta name="twitter:description" content="前言如何让自己的代码在修改最少的情况下跑更多实验，这对于一个码农来说至关重要，尤其是需要多组实验对比的情况。一个很简单的办法是把参数独立出来在命令行输入，唯一的缺点是每次都要输入长达好几行的命令，尤其是牵扯到绝对路径的时候，这种情况下有更简单的解决方法，就是用配置文件。 Python命令行参数简单用法python内置了比较方便的命令行处理方法：argparse类 贴一个简单的snnipet，一看就">
 
 
 
@@ -119,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/07/网络中的Attention-Block/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/04/Python命令行参数/">
 
 
 
@@ -129,7 +125,7 @@
   };
 </script>
 
-  <title>网络中的Attention Block | 小浣熊百米八秒五</title>
+  <title>Python命令行参数 | 小浣熊百米八秒五</title>
   
 
 
@@ -318,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/网络中的Attention-Block/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/Python命令行参数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HaojieYuan">
@@ -335,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">网络中的Attention Block
+          <h1 class="post-title" itemprop="name headline">Python命令行参数
 
               
             
@@ -361,7 +357,7 @@
                 
               
 
-              <time title="Created: 2019-05-07 14:09:54" itemprop="dateCreated datePublished" datetime="2019-05-07T14:09:54+08:00">2019-05-07</time>
+              <time title="Created: 2019-06-04 15:47:19" itemprop="dateCreated datePublished" datetime="2019-06-04T15:47:19+08:00">2019-06-04</time>
             
 
             
@@ -379,7 +375,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
 
                 
                 
@@ -398,8 +394,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/05/07/网络中的Attention-Block/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/07/网络中的Attention-Block/" itemprop="commentCount"></span>
+                <a href="/2019/06/04/Python命令行参数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/04/Python命令行参数/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,7 +403,7 @@
 
           
           
-            <span id="/2019/05/07/网络中的Attention-Block/" class="leancloud_visitors" data-flag-title="网络中的Attention Block">
+            <span id="/2019/06/04/Python命令行参数/" class="leancloud_visitors" data-flag-title="Python命令行参数">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -438,17 +434,15 @@
       
 
       
-        <h2 id="调研目的"><a href="#调研目的" class="headerlink" title="调研目的"></a>调研目的</h2><p>神经网络的卷积+激活+池化经典3连现在已经进化成BN+卷积+激活+池化4连了，再多多数情况比如分类分割前期处理中，这样的操作已经足够。但如果我们希望提取一张图像的全局特征而不愿意使用全连接，那么有种新的网络结构可以考虑，这种结构叫self-attention block。</p>
-<p>对我来说，我的目的是提取两张图片的特征然后做处理，我需要保持图1结构基本不变，在其中嵌入图2的整体语义，那么在这种情况下，我可以用经典4连来做图1的特征提取，而对于图2，self-attention将是不错的选择。</p>
-<h2 id="Geometric-Attentional-Block"><a href="#Geometric-Attentional-Block" class="headerlink" title="Geometric Attentional Block"></a>Geometric Attentional Block</h2><p>来自<a href="https://arxiv.org/abs/1811.12026" target="_blank" rel="noopener">Attacks on State-of-the-Art Face Recognition using Attentional Adversarial Attack Generative Network</a>，做的是生成对抗样本的网络。在提取目标的特征过程中考虑到了要提取全局特征，所以有了下面的设计：</p>
-<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507114126.png" alt></p>
-<p>这个图已经相当清晰了，唯一的问题在于NxCxHxW是如何到NxCxH/2xW/2的，在下认为这就是个简单的降采样。</p>
-<h2 id="Denoise-Block"><a href="#Denoise-Block" class="headerlink" title="Denoise Block"></a>Denoise Block</h2><p>这是谢慈航在FAIR的一篇paper，用滤波的方式消除对抗样本的影响。滤波block中需要attention block，结构如下：</p>
-<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507115220.png" alt></p>
-<p>可以看到这个没有上面的复杂，但本质上差的不多，在论文里仔细看了下，所有这些想法的出处其实是17年一篇引用比较多的文章<a href="https://arxiv.org/pdf/1711.07971.pdf" target="_blank" rel="noopener">Non-Local Neural Networks</a>。</p>
-<h2 id="Non-local-Neural-Networks"><a href="#Non-local-Neural-Networks" class="headerlink" title="Non-local Neural Networks"></a>Non-local Neural Networks</h2><p>先上图：</p>
-<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190507140731.png" alt></p>
-<p>目的一样是为了让每个像素点都能够影响到特征空间中的所有点，而且有short-cut保证很深的网络也可以训练。目前我的个人理解是，self-attention其实就是non-local映射出来的特征层上每个值的大小作为attention的程度。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如何让自己的代码在修改最少的情况下跑更多实验，这对于一个码农来说至关重要，尤其是需要多组实验对比的情况。一个很简单的办法是把参数独立出来在命令行输入，唯一的缺点是每次都要输入长达好几行的命令，尤其是牵扯到绝对路径的时候，这种情况下有更简单的解决方法，就是用配置文件。</p>
+<h2 id="Python命令行参数简单用法"><a href="#Python命令行参数简单用法" class="headerlink" title="Python命令行参数简单用法"></a>Python命令行参数简单用法</h2><p>python内置了比较方便的命令行处理方法：argparse类</p>
+<p>贴一个简单的snnipet，一看就会</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取</span></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'What R U doing'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--ainterger'</span>, default=<span class="number">0</span>, type=int)</span><br><span class="line">parser.add_argument(<span class="string">'--astring'</span>, default=<span class="string">'23456'</span>, type=str)</span><br><span class="line">parser.add_argument(<span class="string">'--config'</span>, default=<span class="string">''</span>, type=str)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用</span></span><br><span class="line">print(args.ainterger) <span class="comment">#输出0或你给的参数</span></span><br></pre></td></tr></table></figure>
+<h2 id="配合yaml文件"><a href="#配合yaml文件" class="headerlink" title="配合yaml文件"></a>配合yaml文件</h2><p>进阶一点的做法是在使用argparse的时候配合yaml文件进行配置，yaml文件是一种通用的配置描述文件，使用缩进表示层级，在 python中读入形式为字典形式，操作方便且被广泛支持。</p>
+<p>给一个简单的yaml文件示例</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">config1:</span></span><br><span class="line"><span class="attr">    attribute1:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">    attribute2:</span> <span class="string">'/path/to/some/dir'</span></span><br><span class="line"><span class="attr">config2:</span></span><br><span class="line"><span class="attr">    attribute1:</span> <span class="number">3</span></span><br><span class="line"><span class="attr">    attribute2:</span></span><br><span class="line"><span class="attr">        attribute1:</span> <span class="string">'aha!'</span></span><br></pre></td></tr></table></figure>
+<p>读取使用流程就是这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取</span></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'What R U doing'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--paraint'</span>, default=<span class="number">0</span>, type=int)</span><br><span class="line">parser.add_argument(<span class="string">'--parastr'</span>, default=<span class="string">'23456'</span>, type=str)</span><br><span class="line">parser.add_argument(<span class="string">'--config'</span>, default=<span class="string">''</span>, type=str)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(args.config) <span class="keyword">as</span> f:</span><br><span class="line">    config = yaml.load(f)</span><br><span class="line">    <span class="keyword">for</span> k,v <span class="keyword">in</span> config.items():</span><br><span class="line">        setattr(args, k, v)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line">print(args.paraint) <span class="comment"># 0</span></span><br><span class="line">print(args.config1[<span class="string">'attribute1'</span>]) <span class="comment"># 1</span></span><br><span class="line">print(args.config2[<span class="string">'attribute2'</span>][<span class="string">'attribute1'</span>]) <span class="comment"># aha!</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -472,9 +466,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CV/" rel="tag"># CV</a>
+            <a href="/tags/命令行参数/" rel="tag"># 命令行参数</a>
           
-            <a href="/tags/Attention-Block/" rel="tag"># Attention Block</a>
+            <a href="/tags/编程/" rel="tag"># 编程</a>
           
         </div>
       
@@ -487,8 +481,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/06/NATTACK-Learning-the-Distributions-of-Adversarial-Examples-for-an-Improved-Black-Box-Attack-on-Deep-Neural-Networks-笔记/" rel="next" title="NATTACK Learning the Distributions of Adversarial Examples for an Improved Black-Box Attack on Deep Neural Networks 笔记">
-                <i class="fa fa-chevron-left"></i> NATTACK Learning the Distributions of Adversarial Examples for an Improved Black-Box Attack on Deep Neural Networks 笔记
+              <a href="/2019/05/28/Adversarial-Examples-are-not-bugs,-They-are-features-笔记/" rel="next" title="Adversarial Examples are not bugs, They are features 笔记">
+                <i class="fa fa-chevron-left"></i> Adversarial Examples are not bugs, They are features 笔记
               </a>
             
           </div>
@@ -496,10 +490,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/09/Efficient-Decision-based-Black-box-Adversarial-Attacks-on-Face-Recognition笔记/" rel="prev" title="Efficient Decision-based Black-box Adversarial Attacks on Face Recognition笔记">
-                Efficient Decision-based Black-box Adversarial Attacks on Face Recognition笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -712,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#调研目的"><span class="nav-number">1.</span> <span class="nav-text">调研目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Geometric-Attentional-Block"><span class="nav-number">2.</span> <span class="nav-text">Geometric Attentional Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Denoise-Block"><span class="nav-number">3.</span> <span class="nav-text">Denoise Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-local-Neural-Networks"><span class="nav-number">4.</span> <span class="nav-text">Non-local Neural Networks</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python命令行参数简单用法"><span class="nav-number">2.</span> <span class="nav-text">Python命令行参数简单用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配合yaml文件"><span class="nav-number">3.</span> <span class="nav-text">配合yaml文件</span></a></li></ol></div>
             
 
           </div>

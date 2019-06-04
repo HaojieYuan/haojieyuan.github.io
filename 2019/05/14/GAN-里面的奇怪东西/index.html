@@ -96,16 +96,18 @@
 
 
 
-  <meta name="description" content="也就随便写写别当真">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小浣熊百米八秒五">
-<meta property="og:url" content="http://yoursite.com/tags/loss函数/index.html">
+  <meta name="description" content="缘起我本以为像我这样自命清高的人，大概这辈子都不会亲手去碰GAN这种骚东西，没想到天命难测，终究需要徒手复现别人GAN的代码， GAN的loss从最古老的GAN的loss说起，$Loss = \log{D_1(x)} + \log{(1-D_1(G_1(x,z)))}$，对D的要求一般是对正常样本输出1，对生成样本输出0。 随后是WGAN的提出。他相对于普通的GAN只做了以下调整：  D最后一层不">
+<meta name="keywords" content="CV,GAN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GAN 里面的奇怪东西">
+<meta property="og:url" content="http://yoursite.com/2019/05/14/GAN-里面的奇怪东西/index.html">
 <meta property="og:site_name" content="小浣熊百米八秒五">
-<meta property="og:description" content="也就随便写写别当真">
+<meta property="og:description" content="缘起我本以为像我这样自命清高的人，大概这辈子都不会亲手去碰GAN这种骚东西，没想到天命难测，终究需要徒手复现别人GAN的代码， GAN的loss从最古老的GAN的loss说起，$Loss = \log{D_1(x)} + \log{(1-D_1(G_1(x,z)))}$，对D的要求一般是对正常样本输出1，对生成样本输出0。 随后是WGAN的提出。他相对于普通的GAN只做了以下调整：  D最后一层不">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-04T07:48:41.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小浣熊百米八秒五">
-<meta name="twitter:description" content="也就随便写写别当真">
+<meta name="twitter:title" content="GAN 里面的奇怪东西">
+<meta name="twitter:description" content="缘起我本以为像我这样自命清高的人，大概这辈子都不会亲手去碰GAN这种骚东西，没想到天命难测，终究需要徒手复现别人GAN的代码， GAN的loss从最古老的GAN的loss说起，$Loss = \log{D_1(x)} + \log{(1-D_1(G_1(x,z)))}$，对D的要求一般是对正常样本输出1，对生成样本输出0。 随后是WGAN的提出。他相对于普通的GAN只做了以下调整：  D最后一层不">
 
 
 
@@ -113,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/loss函数/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/14/GAN-里面的奇怪东西/">
 
 
 
@@ -123,7 +125,7 @@
   };
 </script>
 
-  <title>Tag: loss函数 | 小浣熊百米八秒五</title>
+  <title>GAN 里面的奇怪东西 | 小浣熊百米八秒五</title>
   
 
 
@@ -171,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,7 +245,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -264,22 +266,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -312,57 +298,248 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>loss函数<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/GAN-里面的奇怪东西/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaojieYuan">
+      <meta itemprop="description" content="也就随便写写别当真">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小浣熊百米八秒五">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/05/05/图片相似度评价指标/" itemprop="url">
-            
-              <span itemprop="name">图片相似度评价指标</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">GAN 里面的奇怪东西
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-05T10:36:59+08:00" content="2019-05-05">
-          05-05
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-14 11:42:54" itemprop="dateCreated datePublished" datetime="2019-05-14T11:42:54+08:00">2019-05-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-04 15:48:41" itemprop="dateModified" datetime="2019-06-04T15:48:41+08:00">2019-06-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/14/GAN-里面的奇怪东西/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/14/GAN-里面的奇怪东西/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/14/GAN-里面的奇怪东西/" class="leancloud_visitors" data-flag-title="GAN 里面的奇怪东西">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>我本以为像我这样自命清高的人，大概这辈子都不会亲手去碰GAN这种骚东西，没想到天命难测，终究需要徒手复现别人GAN的代码，</p>
+<h2 id="GAN的loss"><a href="#GAN的loss" class="headerlink" title="GAN的loss"></a>GAN的loss</h2><p>从最古老的GAN的loss说起，$Loss = \log{D_1(x)} + \log{(1-D_1(G_1(x,z)))}$，对D的要求一般是对正常样本输出1，对生成样本输出0。</p>
+<p>随后是WGAN的提出。他相对于普通的GAN只做了以下调整：</p>
+<ul>
+<li>D最后一层不要sigmoid</li>
+<li>loss不取log</li>
+<li>更新Discriminator的参数后将参数clip</li>
+<li>优化算法不使用带动量的？？</li>
+</ul>
+<h2 id="pix2pix"><a href="#pix2pix" class="headerlink" title="pix2pix"></a>pix2pix</h2><p>大名鼎鼎的pixel2pixel，很有特色的是他的Discriminator。正常的D输出都是一个标量，而他的D输出是一个向量，向量中的每一维都是生成图片每个窗口部分是否为真的判定。</p>
+<p>这么做直接导致的一个技术问题就是，怎么定义loss来进行后续的bp和训练。毕竟GAN的Discriminator输出都是标量{0, 1}。在一个GitHub项目中我发现，只用把这个D输出定义成全0或者全1的向量输出就ok。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CV/" rel="tag"># CV</a>
+          
+            <a href="/tags/GAN/" rel="tag"># GAN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/09/Efficient-Decision-based-Black-box-Adversarial-Attacks-on-Face-Recognition笔记/" rel="next" title="Efficient Decision-based Black-box Adversarial Attacks on Face Recognition笔记">
+                <i class="fa fa-chevron-left"></i> Efficient Decision-based Black-box Adversarial Attacks on Face Recognition笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/22/Adversarial Image Translation- Unrestricted Adversarial Examples in Face Recognition Systems/" rel="prev" title="Adversarial Image Translation Unrestricted Adversarial Examples in Face Recognition Systems 笔记">
+                Adversarial Image Translation Unrestricted Adversarial Examples in Face Recognition Systems 笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -382,8 +559,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -528,6 +714,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GAN的loss"><span class="nav-number">2.</span> <span class="nav-text">GAN的loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pix2pix"><span class="nav-number">3.</span> <span class="nav-text">pix2pix</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -656,6 +859,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -701,6 +908,8 @@
 
 
 
+
+  
 
 
   

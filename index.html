@@ -313,6 +313,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/Python命令行参数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaojieYuan">
+      <meta itemprop="description" content="也就随便写写别当真">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小浣熊百米八秒五">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/04/Python命令行参数/" class="post-title-link" itemprop="url">Python命令行参数</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-04 15:47:19" itemprop="dateCreated datePublished" datetime="2019-06-04T15:47:19+08:00">2019-06-04</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/06/04/Python命令行参数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/04/Python命令行参数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/06/04/Python命令行参数/" class="leancloud_visitors" data-flag-title="Python命令行参数">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如何让自己的代码在修改最少的情况下跑更多实验，这对于一个码农来说至关重要，尤其是需要多组实验对比的情况。一个很简单的办法是把参数独立出来在命令行输入，唯一的缺点是每次都要输入长达好几行的命令，尤其是牵扯到绝对路径的时候，这种情况下有更简单的解决方法，就是用配置文件。</p>
+<h2 id="Python命令行参数简单用法"><a href="#Python命令行参数简单用法" class="headerlink" title="Python命令行参数简单用法"></a>Python命令行参数简单用法</h2><p>python内置了比较方便的命令行处理方法：argparse类</p>
+<p>贴一个简单的snnipet，一看就会</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取</span></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'What R U doing'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--ainterger'</span>, default=<span class="number">0</span>, type=int)</span><br><span class="line">parser.add_argument(<span class="string">'--astring'</span>, default=<span class="string">'23456'</span>, type=str)</span><br><span class="line">parser.add_argument(<span class="string">'--config'</span>, default=<span class="string">''</span>, type=str)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用</span></span><br><span class="line">print(args.ainterger) <span class="comment">#输出0或你给的参数</span></span><br></pre></td></tr></table></figure>
+<h2 id="配合yaml文件"><a href="#配合yaml文件" class="headerlink" title="配合yaml文件"></a>配合yaml文件</h2><p>进阶一点的做法是在使用argparse的时候配合yaml文件进行配置，yaml文件是一种通用的配置描述文件，使用缩进表示层级，在 python中读入形式为字典形式，操作方便且被广泛支持。</p>
+<p>给一个简单的yaml文件示例</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">config1:</span></span><br><span class="line"><span class="attr">    attribute1:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">    attribute2:</span> <span class="string">'/path/to/some/dir'</span></span><br><span class="line"><span class="attr">config2:</span></span><br><span class="line"><span class="attr">    attribute1:</span> <span class="number">3</span></span><br><span class="line"><span class="attr">    attribute2:</span></span><br><span class="line"><span class="attr">        attribute1:</span> <span class="string">'aha!'</span></span><br></pre></td></tr></table></figure>
+<p>读取使用流程就是这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取</span></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'What R U doing'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--paraint'</span>, default=<span class="number">0</span>, type=int)</span><br><span class="line">parser.add_argument(<span class="string">'--parastr'</span>, default=<span class="string">'23456'</span>, type=str)</span><br><span class="line">parser.add_argument(<span class="string">'--config'</span>, default=<span class="string">''</span>, type=str)</span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(args.config) <span class="keyword">as</span> f:</span><br><span class="line">    config = yaml.load(f)</span><br><span class="line">    <span class="keyword">for</span> k,v <span class="keyword">in</span> config.items():</span><br><span class="line">        setattr(args, k, v)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 使用</span></span><br><span class="line">print(args.paraint) <span class="comment"># 0</span></span><br><span class="line">print(args.config1[<span class="string">'attribute1'</span>]) <span class="comment"># 1</span></span><br><span class="line">print(args.config2[<span class="string">'attribute2'</span>][<span class="string">'attribute1'</span>]) <span class="comment"># aha!</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/Adversarial-Examples-are-not-bugs,-They-are-features-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -493,6 +682,420 @@
 <p>我觉得吧，这是一个帝国在展现他们的力量，寰宇之内无人争锋。但这也是没落的前兆吧，我们曾经热爱Google、Github、Linux，是因为他们开放、强大、充满着智慧的光芒和信仰的力量。但是我这几年的见闻是，Google 的Tensorflow让人难受的不行，应用商店强制更新且禁不掉，mac、ios和ubuntu一样到处都能找到让人浑身不舒服的小bug，尽管前者少很多。没有什么能一直呆在神坛上，靠近了总是满满的瑕疵。</p>
 <p>计算机科学技术经历了野蛮生长的三十年，这三十年群雄并起，无数人带着梦想或是带着欲望进入了这个行当。随着我们接触到的接口越来越高层，使用的系统越拉越庞大繁杂，总有学科要介入实现管理控制，5年之内，必定是天翻地覆。起码在计算机科学技术上，我们有劣根性，是死是活，一半看政策，一半看运气。若是能拉欧洲一起下水，那将来必将是三足鼎立，欧洲一扫如今的疲软，能够与美国分庭抗礼，美国失去吸纳天下精英的优势，中国继续发展。若是欧洲中立或是站在美国阵营，那就勒紧裤腰带准备过苦日子吧。</p>
 <p>几十年的黄金时代过去了，冷战回来了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/Adversarial Image Translation- Unrestricted Adversarial Examples in Face Recognition Systems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaojieYuan">
+      <meta itemprop="description" content="也就随便写写别当真">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小浣熊百米八秒五">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/22/Adversarial Image Translation- Unrestricted Adversarial Examples in Face Recognition Systems/" class="post-title-link" itemprop="url">Adversarial Image Translation Unrestricted Adversarial Examples in Face Recognition Systems 笔记</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-22 10:47:17" itemprop="dateCreated datePublished" datetime="2019-05-22T10:47:17+08:00">2019-05-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-04 15:51:04" itemprop="dateModified" datetime="2019-06-04T15:51:04+08:00">2019-06-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/22/Adversarial Image Translation- Unrestricted Adversarial Examples in Face Recognition Systems/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/22/Adversarial Image Translation- Unrestricted Adversarial Examples in Face Recognition Systems/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/22/Adversarial Image Translation- Unrestricted Adversarial Examples in Face Recognition Systems/" class="leancloud_visitors" data-flag-title="Adversarial Image Translation Unrestricted Adversarial Examples in Face Recognition Systems 笔记">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><ul>
+<li>现有的具有理论保障的防御思路均针对有限制的扰动，而人脸识别可以在扰动很大的情况下保持ID不变，在上述setting下构造对抗样本将给人脸识别领域的防御带来新的挑战</li>
+</ul>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><ul>
+<li><p>利用starGAN保证ID不变</p>
+</li>
+<li><p>1个Generator对应1个target</p>
+<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/20190522104052.png" alt></p>
+</li>
+</ul>
+<p>虽然属性变了，但攻击成功依靠的可能还是如上的对抗纹理。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/GAN-里面的奇怪东西/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaojieYuan">
+      <meta itemprop="description" content="也就随便写写别当真">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小浣熊百米八秒五">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/14/GAN-里面的奇怪东西/" class="post-title-link" itemprop="url">GAN 里面的奇怪东西</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-14 11:42:54" itemprop="dateCreated datePublished" datetime="2019-05-14T11:42:54+08:00">2019-05-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-04 15:48:41" itemprop="dateModified" datetime="2019-06-04T15:48:41+08:00">2019-06-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/14/GAN-里面的奇怪东西/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/14/GAN-里面的奇怪东西/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/14/GAN-里面的奇怪东西/" class="leancloud_visitors" data-flag-title="GAN 里面的奇怪东西">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>我本以为像我这样自命清高的人，大概这辈子都不会亲手去碰GAN这种骚东西，没想到天命难测，终究需要徒手复现别人GAN的代码，</p>
+<h2 id="GAN的loss"><a href="#GAN的loss" class="headerlink" title="GAN的loss"></a>GAN的loss</h2><p>从最古老的GAN的loss说起，$Loss = \log{D_1(x)} + \log{(1-D_1(G_1(x,z)))}$，对D的要求一般是对正常样本输出1，对生成样本输出0。</p>
+<p>随后是WGAN的提出。他相对于普通的GAN只做了以下调整：</p>
+<ul>
+<li>D最后一层不要sigmoid</li>
+<li>loss不取log</li>
+<li>更新Discriminator的参数后将参数clip</li>
+<li>优化算法不使用带动量的？？</li>
+</ul>
+<h2 id="pix2pix"><a href="#pix2pix" class="headerlink" title="pix2pix"></a>pix2pix</h2><p>大名鼎鼎的pixel2pixel，很有特色的是他的Discriminator。正常的D输出都是一个标量，而他的D输出是一个向量，向量中的每一维都是生成图片每个窗口部分是否为真的判定。</p>
+<p>这么做直接导致的一个技术问题就是，怎么定义loss来进行后续的bp和训练。毕竟GAN的Discriminator输出都是标量{0, 1}。在一个GitHub项目中我发现，只用把这个D输出定义成全0或者全1的向量输出就ok。</p>
 
           
         
@@ -1795,635 +2398,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/ResNet 细节/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HaojieYuan">
-      <meta itemprop="description" content="也就随便写写别当真">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小浣熊百米八秒五">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/23/ResNet 细节/" class="post-title-link" itemprop="url">ResNet一点细节</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-23 17:59:14" itemprop="dateCreated datePublished" datetime="2019-04-23T17:59:14+08:00">2019-04-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-25 13:21:29" itemprop="dateModified" datetime="2019-04-25T13:21:29+08:00">2019-04-25</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/04/23/ResNet 细节/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/23/ResNet 细节/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2019/04/23/ResNet 细节/" class="leancloud_visitors" data-flag-title="ResNet一点细节">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ResNet-细节"><a href="#ResNet-细节" class="headerlink" title="ResNet 细节"></a>ResNet 细节</h1><ol>
-<li>Resblock在输入输出维度不一致时的处理：<ol>
-<li>多出的维度直接填充为0</li>
-<li>对short cut做conv+batch norm</li>
-<li>实际实现中会对channel较多的做down sample</li>
-</ol>
-</li>
-<li>发现了再更</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/Batch & Instance Normalization/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HaojieYuan">
-      <meta itemprop="description" content="也就随便写写别当真">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小浣熊百米八秒五">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/23/Batch & Instance Normalization/" class="post-title-link" itemprop="url">Batch norm 和 Instance Norm</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-23 17:36:07" itemprop="dateCreated datePublished" datetime="2019-04-23T17:36:07+08:00">2019-04-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-25 13:46:58" itemprop="dateModified" datetime="2019-04-25T13:46:58+08:00">2019-04-25</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/04/23/Batch & Instance Normalization/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/23/Batch & Instance Normalization/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2019/04/23/Batch & Instance Normalization/" class="leancloud_visitors" data-flag-title="Batch norm 和 Instance Norm">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Batch-amp-Instance-Normalization"><a href="#Batch-amp-Instance-Normalization" class="headerlink" title="Batch &amp; Instance Normalization"></a>Batch &amp; Instance Normalization</h1><ul>
-<li><p>Batch Normalization</p>
-<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/batch-norm-formula.jpeg" alt></p>
-</li>
-<li><p>Instance Normalization</p>
-</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/instance-norm-formula.jpeg" alt></p>
-<p>Batch Normalization is designed for gradient vanishing and covariance shift.</p>
-<p>It makes a batch of input normalize to Gaussian distribution.</p>
-<p>Instance Normalization is 1 sample independent across batch version of batch normalization.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/Neural Style Transfer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HaojieYuan">
-      <meta itemprop="description" content="也就随便写写别当真">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小浣熊百米八秒五">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/23/Neural Style Transfer/" class="post-title-link" itemprop="url">Neural Style Transfer</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-23 15:01:46" itemprop="dateCreated datePublished" datetime="2019-04-23T15:01:46+08:00">2019-04-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-25 13:21:55" itemprop="dateModified" datetime="2019-04-25T13:21:55+08:00">2019-04-25</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/调研笔记/" itemprop="url" rel="index"><span itemprop="name">调研笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/04/23/Neural Style Transfer/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/23/Neural Style Transfer/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2019/04/23/Neural Style Transfer/" class="leancloud_visitors" data-flag-title="Neural Style Transfer">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Neural-Style-Transfer"><a href="#Neural-Style-Transfer" class="headerlink" title="Neural Style Transfer"></a>Neural Style Transfer</h1><h2 id="What-it-can-do"><a href="#What-it-can-do" class="headerlink" title="What it can do?"></a>What it can do?</h2><p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/0*h5YONGux0M4j1Bdf.png" alt></p>
-<p><img src="https://raw.githubusercontent.com/HaojieYuan/img_links/master/imgs/0*qdJ0aARvEcEuJ92l.png" alt></p>
-<h2 id="How"><a href="#How" class="headerlink" title="How?"></a>How?</h2><ol>
-<li><p>Given image_style, image_content.</p>
-</li>
-<li><p>Define distance functions:  style_distance(img1, img2),  content_distance(img1, img2)</p>
-</li>
-</ol>
-<ul>
-<li><p>content_distance: Euclidean distance between the intermediate representations of 2 images.</p>
-</li>
-<li><p>style_distance: A little bit complicated. see raw code:</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gram_matrix</span><span class="params">(input_tensor)</span>:</span></span><br><span class="line">  <span class="comment"># We make the image channels first </span></span><br><span class="line">  channels = int(input_tensor.shape[<span class="number">-1</span>])</span><br><span class="line">  a = tf.reshape(input_tensor, [<span class="number">-1</span>, channels])</span><br><span class="line">  n = tf.shape(a)[<span class="number">0</span>]</span><br><span class="line">  <span class="comment"># gram is a channels x channels matrix</span></span><br><span class="line">  gram = tf.matmul(a, a, transpose_a=<span class="literal">True</span>)</span><br><span class="line">  <span class="keyword">return</span> gram / tf.cast(n, tf.float32)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_style_loss</span><span class="params">(base_style, gram_target)</span>:</span></span><br><span class="line">  <span class="string">"""Expects two images of dimension h, w, c"""</span></span><br><span class="line">  <span class="comment"># height, width, num filters of each layer</span></span><br><span class="line">  height, width, channels = base_style.get_shape().as_list()</span><br><span class="line">  gram_style = gram_matrix(base_style)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> tf.reduce_mean(tf.square(gram_style - gram_target))</span><br></pre></td></tr></table></figure>
-<p>gram means correlation between different channels in intermediate layers.</p>
-<p>New explanation:</p>
-<blockquote>
-<p>我们从style transfer中使用的Gram matrix出发，试图解释为什么Gram matrix可以代表一个图片的style这个问题。这是我看完style transfer的paper后感觉最为迷惑的一点。一个偶然的机会，我们发现这个匹配两张图的Gram matrix，其实数学上严格等价于极小化这两张图deep activation的2nd poly kernel的MMD距离。其中，MMD距离是用来通过从两个分布中sample的样本来衡量两个分布之间的差异的一种度量。所以本质上，style transfer这个paper做的事情就是将生成图片的deep activation分布和style image的分布进行匹配。这其实可以认为是一个domain adaptation的问题。所以很自然我们可以使用类似于adaBN的想法去做这件事情。这后续有一系列的工作拓展了这个想法，包括adaIN[3]以及若干基于GAN去做style transfer的工作。</p>
-<p>Li, Yanghao, Naiyan Wang, Jiaying Liu, and Xiaodi Hou. “Demystifying neural style transfer.” arXiv preprint arXiv:1701.01036 (2017)</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2470,7 +2444,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2493,7 +2467,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2538,7 +2514,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2783,9 +2765,9 @@
   
     
       
-        
-      
     
+      
+        
       
     
       
